@@ -1,0 +1,10 @@
+<%= form_for @user do |f| %>
+<%= f.label 'Grape' %><br>
+<datalist id = "preferences">
+<% @user.preferences.keys.each do |key|%>
+  <option value="<%=key%>">
+    <h1>Hi</h1>
+<%end%>
+</datalist>
+<%= f.submit "Submit" %>
+<% end %>
