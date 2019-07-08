@@ -9,6 +9,8 @@
 User.delete_all()
 Wine.delete_all()
 Review.delete_all()
+Cart.delete_all()
+CartWine.delete_all()
 
 
 
@@ -20,4 +22,4 @@ Review.create(rating: 5, content: "Smoky", wine_id: Wine.find_by(name: "Austin H
 
 Cart.create(user_id: User.find_by(name: "Matt").id)
 
-CartWine.create(wine_id: Wine.find_by(name: "Austin Hope").id, cart_id: Cart.find_by(user_id: User.find_by(name: "Matt").id ))
+CartWine.create(wine_id: Wine.find_by(name: "Austin Hope").id, cart_id: Cart.find_by(user_id: User.find_by(name: "Matt")).id)
