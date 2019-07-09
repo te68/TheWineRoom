@@ -1,19 +1,11 @@
+<%= form_for @user, :html => {class: 'form' } do |f|%>
 <h1>Sign Up</h1>
-
-<%= form_for @user do |f|%>
-    <%= f.label :name%>
-    <%= f.text_field :name%>
-    <%= f.label :password%>
-    <%= f.text_field :password%>
-    <%= fields_for :preferences, @user.preferences do |preferences_fields| %>
-    Grapes : <%@grapes.each do |grape| %>
-                <%= preferences_fields.check_box :grape, { multiple: true }, grape, false%>
-                <%= preferences_fields.label grape%>
-             <%end%><br>
-    Rating  : <%= preferences_fields.select :min_rating, options_for_select(["1", "2", "3", "4", "5"])  %>
-    Price : <%= preferences_fields.number_field :price%>
-    <% end %>
-    
+    <%= f.text_field :name, placeholder: 'Name', :class => "width-alter"%><br>
+    <%= f.password_field :password, placeholder: 'Password', :class => "width-alter"%><br>
+        <%@grapes.each do |grape| %>
+                <%= f.label grape%>
+                <%= f.check_box :preferences, { multiple: true }, grape, false%>       
+        <%end%>
     <%= f.submit "Submit" %>
 <br>
 <%end%>

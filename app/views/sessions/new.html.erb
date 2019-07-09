@@ -1,0 +1,12 @@
+<%= form_tag("/login", method: "post", class: "form")do %>
+<h1>Member Login</h1>
+ 
+  <%= text_field_tag :name,nil, placeholder: 'Name', :class => "width-alter"%><br>
+  <%= password_field_tag :password, nil, placeholder: 'Password', :class => "width-alter"%><br>
+
+  <%= submit_tag "Login" %>
+  <%= link_to "Don't have an account? Register.", "/users/new"%>
+<%end%>
+
+  
+  

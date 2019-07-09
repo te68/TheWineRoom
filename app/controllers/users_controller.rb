@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, :except => [:new]
+
   def index
     @users = User.all
   end
@@ -9,44 +11,36 @@ class UsersController < ApplicationController
   end
 
   def create
-    name = params[:user][:name]
-    password = params[:user][:password]
-    grape = params[:preferences][:grape]
-    min_rating = params[:preferences][:min_rating]
-    price = params[:preferences][:price]
-    @user = User.create(name: name, password: password, preferences: { grape: grape, min_rating: min_rating, price: price })
-    redirect_to user_path(@user)
+    @user = User.new(name: params[:user][:name], password: params[:user][:password], preferences: params[:user][:preferences])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to "/users/new"
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    if (params[:id].to_i == session[:user_id])
+      @user = User.find(params[:id])
+    else
+      redirect_to "/users"
+    end
   end
 
   def edit
-    @user = User.find(params[:id])
-    @grapes = ["Cabernet Sauvginon", "Merlot", "Sauvginon Blanc", "Pinot Noir", "Reisling", "Malbec", "Pinot Grigio"]
-    render :edit
+    if (params[:id].to_i == session[:user_id])
+      @user = User.find(params[:id])
+      @grapes = ["Cabernet Sauvginon", "Merlot", "Sauvginon Blanc", "Pinot Noir", "Reisling", "Malbec", "Pinot Grigio"]
+      render :edit
+    else
+      redirect_to "/users/#{session[:user_id]}/edit"
+    end
   end
 
   def update
     @user = User.find(params[:id])
-    if params[:user][:preferences].class == Array
-      params[:user][:preferences].each do |grape|
-        @user.preferences[:grape] << grape
-      end
-    elsif params[:user][:preferences].to_i > 5
-      @user.preferences[:price] = params[:user][:preferences].to_i
-    else
-      @user.preferences[:min_rating] = params[:user][:preferences]
-    end
-    @user.preferences[:grape].uniq
-    @user.save
+    @user.update(name: params[:user][:name], preferences: params[:user][:preferences])
     redirect_to user_path(@user.id)
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :password, :preferences)
   end
 end
