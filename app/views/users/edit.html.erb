@@ -1,20 +1,9 @@
 <%= form_for @user do |f|%>
+  <%= f.label :name%><br>
+  <%= f.text_field :name%><br>
   <%@grapes.each do |grape| %>
     <%= f.check_box :preferences, { multiple: true }, grape, false%>
-    <%= f.label grape%>
+    <%= f.label grape%><br>
   <%end%><br>
 <%= f.submit "Submit" %>
-<% end %>
-<%= form_for @user do |f|%>
-  <%= f.label :min_rating%>
-  <%= f.select :preferences, options_for_select(["1", "2", "3", "4", "5"])%>
-  <%= f.submit "Submit" %>
-<br>
-<%end%>
-
-<%= form_for @user do |f|%>
-  <%= f.label :price%>
-  <%= f.number_field :preferences%>
-  <%= f.submit "Submit" %>
-<br>
 <%end%>

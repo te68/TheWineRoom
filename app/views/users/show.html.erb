@@ -1,17 +1,10 @@
 <%= @user.name %>
 
 <ul>
-<%@user.preferences[:grape].each do |grape|%>
+<%@user.preferences.each do |grape|%>
     <li>
     <%=grape%>
     </li>
 <%end%>
-<li>
-<%=@user.preferences[:min_rating]%>
-</li>
-<li>
-<%=@user.preferences[:price]%>
-</li>
-
 </ul>
 <%= link_to "Edit Prefences", edit_user_path(@user) %>
