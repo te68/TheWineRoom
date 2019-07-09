@@ -2,12 +2,14 @@
 
 one:
   name: MyString
-  grape: MyString
-  price: 1
   rating: 1.5
+  color: MyString
+  country: MyString
+  year: 1
 
 two:
   name: MyString
-  grape: MyString
-  price: 1
   rating: 1.5
+  color: MyString
+  country: MyString
+  year: 1
