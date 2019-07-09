@@ -1,16 +1,11 @@
+<%= form_for @user, :html => {class: 'form' } do |f|%>
 <h1>Sign Up</h1>
-
-<%= form_for @user do |f|%>
-    <%= f.label :name%><br>
-    <%= f.text_field :name%><br>
-    <%= f.label :password%><br>
-    <%= f.password_field :password%><br>
-    
-    Grapes :<br> <%@grapes.each do |grape| %>
-                <%= f.check_box :preferences, { multiple: true }, grape, false%>
-                <%= f.label grape%><br>
-             <%end%>
-    
+    <%= f.text_field :name, placeholder: 'Name', :class => "width-alter"%><br>
+    <%= f.password_field :password, placeholder: 'Password', :class => "width-alter"%><br>
+        <%@grapes.each do |grape| %>
+                <%= f.label grape%>
+                <%= f.check_box :preferences, { multiple: true }, grape, false%>       
+        <%end%>
     <%= f.submit "Submit" %>
 <br>
 <%end%>
