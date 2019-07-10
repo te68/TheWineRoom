@@ -1,12 +1,16 @@
+<%= image_tag 'The-Wine-Room-Logo.png', :class => 'app-logo' %>
 <%= form_for @user, :html => {class: 'form' } do |f|%>
-<h1>Sign Up</h1>
-    <%= f.text_field :name, placeholder: 'Name', :class => "width-alter"%><br>
-    <%= f.password_field :password, placeholder: 'Password', :class => "width-alter"%><br>
+<h1 class= "form-heading">Sign Up</h1>
+    <%= f.text_field :name, placeholder: 'Name', :class => "regular-input"%><br>
+    <%= f.password_field :password, placeholder: 'Password', :class => "regular-input"%><br>
         <%@grapes.each do |grape| %>
+        <div class="checkbox-group">
                 <%= f.label grape%>
-                <%= f.check_box :preferences, { multiple: true }, grape, false%>       
+                <%= f.check_box :preferences, { multiple: true, :class => "regular-checkbox" }, grape, false%>       
+        </div>
         <%end%>
     <%= f.submit "Submit" %>
-<br>
+    <p>or</p>
+  <%= link_to "Login to Your Account.", "/login", :class => "create-account-link"%> 
 <%end%>
 

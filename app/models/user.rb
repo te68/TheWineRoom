@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :wines, through: :reviews
   has_many :carts
   validates :name, presence: true
+  validates :name, uniqueness: true
 end

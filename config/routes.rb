@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "/carts/:id", to: "carts#update"
   resources :cart_wines
   resources :carts
   resources :reviews

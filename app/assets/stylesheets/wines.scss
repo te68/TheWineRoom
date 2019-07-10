@@ -1,3 +1,25 @@
 // Place all the styles related to the wines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#ui-grid{
+    margin-left: 2em;
+}
+
+.wine-properties{
+    border: 1px solid #D4D4D5;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 1em;
+    margin: .1em;
+    font-weight: bold;
+    color: black;
+}
+
+#tall-sample-wine-image {
+    height: 500px;
+}
+
+#checkout-container {
+    text-align:left;
+    background-color: yellow; 
+}

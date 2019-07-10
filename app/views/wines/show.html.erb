@@ -1,0 +1,36 @@
+
+
+<div class="ui grid">
+  <div class="four wide column">
+  <%= image_tag 'tall-sample-wine-image.png', :id=>"tall-sample-wine-image" %>
+  </div>
+  <div class="four wide column">
+  
+  <p><%=@wine.name%></p>
+    <p><strong style= "color:black"><%=  @wine.color%></strong> Wine from <strong style= "color:black"><%=@wine.country%></strong></p>
+    <div class = 'wine-tags'>
+        <div>Sweetness
+        </div>
+        <div>Dryness
+        </div>
+    </div>
+    <div><li>icon</li></div>
+
+  
+  </div>
+
+  <div class="four wide column" id="checkout-container">
+    Price: $<%=@wine.price%>.99
+    <p style="font-weight: lighter; font-color: #D4D4D5; text-align: left;">Price is per bottle.</p>
+    <%=form_for @cartwine do |c| %>
+         <%=c.number_field :cart_id%>
+         <%= c.hidden_field :wine_id, value: params[:id]%>
+    <%=c.submit "Add to Cart"%>
+    <%end%>
+  </div>
+</div>
+
+<div class="four wide column">
+    <p>Reviews<p>
+</div>
+

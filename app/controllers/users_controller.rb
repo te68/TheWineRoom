@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, :except => [:new]
+  before_action :require_login, :except => [:new, :create]
 
   def index
     @users = User.all
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(name: params[:user][:name], password: params[:user][:password], preferences: params[:user][:preferences])
     if @user.save
       session[:user_id] = @user.id
+      @cart = Cart.create(user_id: @user.id)
       redirect_to user_path(@user)
     else
       redirect_to "/users/new"

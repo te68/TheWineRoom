@@ -1,0 +1,42 @@
+<h1>Wines Index page</h1>
+
+<div class="ui grid" id = "ui-grid">
+<% 24.times do%>
+<% wine = @wines.sample %>
+  <div class="four wide column">
+            <div class="ui link cards">
+  <div class="card">
+    <div class="image">
+      <%= image_tag 'sample-wine.jpg' %>
+    </div>
+    <div class="content">
+      <div class="header"><%=link_to wine.name, wine_path(wine)%></div>
+      <div class="meta">
+        <p><strong style= "color:black"><%=  wine.color%></strong> Wine from <strong style= "color:black"><%=wine.country%></strong></p>
+      </div>
+      <div class="description">
+       <!-- <div class = "wine-properties">SWEETNESS</div><div class = "wine-properties">DRYNESS</div> -->
+      </div>
+    </div>
+    <div class="extra content">
+      <span class="right floated">
+        Vintage <%= wine.year%>
+      </span>
+      <span style="margin-left: -5em;">
+        <i class="star icon"></i>
+        Rating <%= wine.rating%>
+      </span>
+    </div>
+  </div>
+  </div>
+  </div>
+  <%# end of four wide column %>
+  <%end%>
+</div>
+
+
+
+
+
+
+  

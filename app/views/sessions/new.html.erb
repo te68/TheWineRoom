@@ -1,11 +1,14 @@
+<%= image_tag 'The-Wine-Room-Logo.png', :class => 'app-logo' %>
+
 <%= form_tag("/login", method: "post", class: "form")do %>
-<h1>Member Login</h1>
+<h1 class= "form-heading">Member Login</h1>
  
-  <%= text_field_tag :name,nil, placeholder: 'Name', :class => "width-alter"%><br>
-  <%= password_field_tag :password, nil, placeholder: 'Password', :class => "width-alter"%><br>
+  <%= text_field_tag :name,nil, placeholder: 'Name', :class => "regular-input"%><br>
+  <%= password_field_tag :password, nil, placeholder: 'Password', :class => "regular-input"%><br>
 
   <%= submit_tag "Login" %>
-  <%= link_to "Don't have an account? Register.", "/users/new"%>
+  <p>or</p>
+  New here? <%= link_to "Create your Account.", "/users/new", :class => "create-account-link"%> 
 <%end%>
 
   

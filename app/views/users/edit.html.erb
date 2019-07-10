@@ -1,6 +1,6 @@
 <%= form_for @user do |f|%>
   <%= f.label :name%><br>
-  <%= f.text_field :name%><br>
+  <%= f.text_field :name, :class => "width-alter"%><br>
   <%@grapes.each do |grape| %>
     <%= f.check_box :preferences, { multiple: true }, grape, false%>
     <%= f.label grape%><br>
