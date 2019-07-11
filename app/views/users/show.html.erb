@@ -1,9 +1,9 @@
-<%= @user.name %>
 
-<ul>
+<%= @user.name%>
+<ul class="preferences-list">
 <%@user.preferences.each do |grape|%>
-    <li>
-    <%=grape%>
+    <li class = "preferences-cards">
+    <%=grape.upcase%><%= link_to image_tag("baseline-close-24px.svg") %>
     </li>
 <%end%>
 </ul>

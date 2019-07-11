@@ -13,3 +13,57 @@
  *= require_tree .
  *= require_self
  */
+
+
+.app-logo{
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 10em;
+    background: transparent;
+}
+
+*:focus{
+    outline:none
+}
+
+.form{
+
+    background-color: transparent;
+    width: 30%;
+    padding: 2em;
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 1em;
+    border: 0.2em solid #533EE9;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #F73759;
+    color: white;
+    padding: 10px 20px;
+    margin: 6px 0;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+.wines-link{
+    position: fixed;
+    top: 1.5em;
+    right: 1.5em;
+    font-weight: 100;
+    font-size: 1em;
+    padding: 1.7em 4em;
+    background-color: #533EE9;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}.wines-link:hover{
+    color: white;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+

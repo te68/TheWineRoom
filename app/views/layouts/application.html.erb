@@ -19,8 +19,10 @@
   </head>
 
   <body>
+  <%= image_tag 'The-Wine-Room-Logo.png', :class => 'app-logo' %>
+
   <div>
-  <%= link_to "Wine List", wines_path %>
+  <%= link_to "WINES",wines_path, :class => "wines-link"%>
   </div>
     <%= yield %>
   </body>
