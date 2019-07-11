@@ -9,11 +9,13 @@ class ReviewsController < ApplicationController
     @user = User.find(session[:user_id])
     @review = Review.new(review_params)
     @review.user = @user
+    @review.save
+    redirect_to user_path(@user)
   end
 
   private
 
   def review_params
-    pramas.require(:review).permit(:rating, :content, :wine_id)
+    params.require(:review).permit(:rating, :content, :wine_id)
   end
 end

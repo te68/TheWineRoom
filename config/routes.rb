@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   post "/carts/:id", to: "carts#update"
+  post "/checkout", to: "carts#checkout"
   resources :cart_wines
   resources :carts
-  resources :reviews
+  post "/reviews/:id/new", to: "reviews#new"
+
+  resources :reviews, only: [:index, :create, :edit, :update, :delete]
   resources :wines
   resources :users
 

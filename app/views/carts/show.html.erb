@@ -4,7 +4,12 @@
 <%end %>
 <h1> Total: $<%=  @cart.total %> </h1>
 
-<%= form_tag cart_path(@cart), method: "update" do -%>
-  <%= hidden_field_tag :cart_id, @cart.id -%>
+<%= form_tag cart_path(@cart), method: "update" do %>
+  <%= hidden_field_tag :cart_id, @cart.id %>
   <%= submit_tag 'Empty Cart', data: {confirm: "Are you sure?"}%>
-<%- end -%>
+<% end %>
+
+<%= form_tag "/checkout", method: "update" do %>
+  <%= hidden_field_tag :cart_id, @cart.id %>
+  <%= submit_tag 'Purchase', data: {confirm: "Are you sure?"}%>
+<% end %>

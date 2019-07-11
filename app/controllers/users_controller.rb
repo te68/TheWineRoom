@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:user][:name], password: params[:user][:password], preferences: params[:user][:preferences])
+    @user = User.new(name: params[:user][:name], password: params[:user][:password], preferences: params[:user][:preferences], purchased: [])
     if @user.save
       session[:user_id] = @user.id
       @cart = Cart.create(user_id: @user.id)

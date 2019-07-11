@@ -1,6 +1,11 @@
 <h1>Create a new review</h1>
 
 <%=form_for @review do |f|%>
+<%=f.label :rating%>
 <%=f.number_field :rating%>
+<%=f.label :content%>
 <%=f.text_area :content%>
+<%=f.hidden_field :wine_id, :value => "#{params[:id]}"%>
+<%=f.submit%>
+<%end%>
 
