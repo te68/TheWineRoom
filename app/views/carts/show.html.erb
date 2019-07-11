@@ -1,9 +1,19 @@
-<h1> Your Cart </h1>
+<%= link_to "Shopping Cart", "/carts/#{User.find(session[:user_id]).carts[0].id}", :class => "wines-link", :id=>'cart-link'%>
+<%= link_to "Logout", "/logout", :class => "wines-link" , :id => 'logout'%>
+<%= link_to "Your Profile", "/users/#{User.find(session[:user_id]).id}", :class => "wines-link", :id => "profile-link"%>
+
+<%= link_to "Wines",wines_path, :class => "wines-link", :id => "wines-page-link"%>
+
+<div class = "cart-container">
+<h1 class = "cart-heading"> Your Cart </h1>
+<div class = "cartwine-container">
 <% @names.uniq.each do |w| %>
 <%= w + " Price per bottle: " + Wine.find_by(name: w).price.to_s + " Quantity: " + @names.count(w).to_s  %> <br>
 <%end %>
+</div>
 <h1> Total: $<%=  @cart.total %> </h1>
 
+<div class="checkout-btns">
 <%= form_tag cart_path(@cart), method: "update" do %>
   <%= hidden_field_tag :cart_id, @cart.id %>
   <%= submit_tag 'Empty Cart', data: {confirm: "Are you sure?"}%>
@@ -13,3 +23,4 @@
   <%= hidden_field_tag :cart_id, @cart.id %>
   <%= submit_tag 'Purchase', data: {confirm: "Are you sure?"}%>
 <% end %>
+</div>

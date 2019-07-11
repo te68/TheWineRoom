@@ -1,8 +1,17 @@
-<h1>Wines Index page</h1>
+<%= link_to "Your Profile", "users/#{User.find(session[:user_id]).id}", :class => "wines-link", :id => "profile-link"%>
+<%= link_to "Shopping Cart", "/carts/#{User.find(session[:user_id]).carts[0].id}", :class => "wines-link", :id=>'cart-link'%>
+<%= link_to "Logout", "/logout", :class => "wines-link" , :id => 'logout'%>
+<%= link_to "Wines",wines_path, :class => "wines-link", :id => "wines-page-link"%>
+
+<h1>The Wine Room Collection</h1>
+
+<%= form_tag "/wines", :method => 'get' do  %>
+<%= select_tag 'wine', options_for_select(@grapes.collect{ |u| [u, u] })%>
+<%= submit_tag "Filter" %>
+<% end %>
 
 <div class="ui grid" id = "ui-grid">
-<% 24.times do%>
-<% wine = @wines.sample %>
+<% @wines.each do |wine|%>
   <div class="four wide column">
             <div class="ui link cards">
   <div class="card">

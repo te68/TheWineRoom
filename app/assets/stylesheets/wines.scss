@@ -1,8 +1,13 @@
 // Place all the styles related to the wines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#ui-grid{
-    margin-left: 2em;
+
+.image-link{
+    width: 100%;
+}
+
+#profile-link{
+    right: 24.5em;
 }
 
 .wine-properties{
@@ -15,11 +20,57 @@
     color: black;
 }
 
+#ui-grid{
+    margin-left: 2em;
+    margin-top: 3em;
+}
+
 #tall-sample-wine-image {
-    height: 500px;
+    height: 300px;
+    margin-top: -2em;
+    margin-left: -15em;
+    position: absolute;
 }
 
 #checkout-container {
-    text-align:left;
-    background-color: yellow; 
+}
+
+#price-container{
+    font-size: 2em;
+    padding-bottom: 10px;
+}
+
+#show-page-container{
+    margin-top: 10em;
+    margin-left: 15em;
+}
+
+#showpage-info{
+    border-radius: 1em;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#showpage-review-container{
+    margin-top: 10em;
+}
+
+.review-heading {
+    font-size: 5em;
+    margin-top: 2.5em;
+    letter-spacing: 2px;
+}
+
+.review-separator {
+    width: 90%;
+    height: 2px;
+    margin-top: 10em;
+    margin-left: 5em;
+    margin-right: 2em;
+    position: absolute;
+    background-color: #ccc;
+}
+
+#review-card {
+    margin-top: 5em;
+    margin-left: 3em;
 }

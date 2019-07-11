@@ -1,12 +1,16 @@
+<%= link_to "Shopping Cart", "/carts/#{User.find(session[:user_id]).carts[0].id}", :class => "wines-link", :id=>'cart-link'%>
+<%= link_to "Logout", "/logout", :class => "wines-link" , :id => 'logout'%>
+<%= link_to "Wines",wines_path, :class => "wines-link", :id => "wines-page-link"%>
+<%= link_to "Your Profile", "/users/#{User.find(session[:user_id]).id}", :class => "wines-link", :id => "profile-link"%>
 
 
-<div class="ui grid">
+<div class="ui grid" id = "show-page-container">
   <div class="four wide column">
-  <%= image_tag 'tall-sample-wine-image.png', :id=>"tall-sample-wine-image" %>
+  <%= image_tag 'tall-sample-wine-image.jpg', :id=>"tall-sample-wine-image" %>
   </div>
-  <div class="four wide column">
+  <div class="four wide column" id = "showpage-info">
   
-  <p><%=@wine.name%></p>
+  <p style="font-size: 2em; font-weight: lighter; line-height: 1em;"><%=@wine.name%></p>
     <p><strong style= "color:black"><%=  @wine.color%></strong> Wine from <strong style= "color:black"><%=@wine.country%></strong></p>
     <div class = 'wine-tags'>
         <div>Sweetness
@@ -20,9 +24,12 @@
   </div>
 
   <div class="four wide column" id="checkout-container">
+  <div id = "price-container">
     Price: $<%=@wine.price%>.99
-    <p style="font-weight: lighter; font-color: #D4D4D5; text-align: left;">Price is per bottle.</p>
+  </div>
+    <p style="font-weight: lighter; font-color: #D4D4D5;">Price is per bottle.</p>
     <%=form_for @cartwine do |c| %>
+        <%= c.label :quantity%><br>
          <%=c.number_field :cart_id%>
          <%= c.hidden_field :wine_id, value: params[:id]%>
     <%=c.submit "Add to Cart"%>
@@ -30,7 +37,23 @@
   </div>
 </div>
 
-<div class="four wide column">
-    <p>Reviews<p>
+<div class="review-separator"></div>
+
+<h1 class="review-heading">Reviews</h1>
+
+<div class="ui card" id ="review-card">
+<%@wine.reviews.each do |review|%>
+  <div class="content">
+    <a class="header"><%=review.user.name%></a>
+    <div class="meta">
+      <span class="date">Rating: <%= review.rating%></span>
+    </div>
+    <div class="description">
+      "<%= review.content%>"
+    </div>
+  </div>
+  <div class="extra content">
+  </div>
+  <%end%>
 </div>
 

@@ -1,3 +1,7 @@
+<%= link_to "Shopping Cart", "/carts/#{User.find(session[:user_id]).carts[0].id}", :class => "wines-link", :id=>'cart-link'%>
+<%= link_to "Logout", "/logout", :class => "wines-link" , :id => 'logout'%>
+<%= link_to "WINES",wines_path, :class => "wines-link", :id => "wines-page-link"%>
+
 <% @users.each do |u| %>
 <%= link_to u.name, user_path(u) %>
 <% end %>
