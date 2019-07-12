@@ -6,17 +6,20 @@
 <h1>The Wine Room Collection</h1>
 
 <%= form_tag "/wines", :method => 'get' do  %>
-<%= select_tag 'wine', options_for_select(@grapes.collect{ |u| [u, u] })%>
+<%= select_tag "wine", options_for_select(@grapes.collect{ |grape| [grape, grape] })%>
 <%= submit_tag "Filter" %>
 <% end %>
 
 <div class="ui grid" id = "ui-grid">
 <% @wines.each do |wine|%>
   <div class="four wide column">
-            <div class="ui link cards">
+            <div class="ui link cards slide-top">
   <div class="card">
     <div class="image">
-      <%= image_tag 'sample-wine.jpg' %>
+    <% r = Random.new%>
+    <%r = r.rand(1...17)%>
+    <% randi = "sample-wine" +r.to_s+ ".jpg"%>
+      <%= image_tag randi %>
     </div>
     <div class="content">
       <div class="header"><%=link_to wine.name, wine_path(wine)%></div>

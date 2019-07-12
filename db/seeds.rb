@@ -1,6 +1,6 @@
 require_relative "./../api.rb"
 
-Wine.delete_all()
+#Wine.delete_all()
 
 FINEDATA.each do |h|
   h.each do |key, hash|

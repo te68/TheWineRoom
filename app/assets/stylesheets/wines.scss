@@ -6,6 +6,7 @@
     width: 100%;
 }
 
+
 #profile-link{
     right: 24.5em;
 }
@@ -22,7 +23,7 @@
 
 #ui-grid{
     margin-left: 2em;
-    margin-top: 3em;
+    margin-top: 10em;
 }
 
 #tall-sample-wine-image {
@@ -74,3 +75,41 @@
     margin-top: 5em;
     margin-left: 3em;
 }
+
+
+// animations
+
+.slide-top {
+	-webkit-animation: slide-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: slide-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation-delay: .1s;
+            animation-timing-function: ease-in-out;
+}
+
+ @-webkit-keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+              opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(-100px);
+              transform: translateY(-100px);
+              opacity: 100%;
+    }
+  }
+  @keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+              opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(-100px);
+              transform: translateY(-100px);
+              opacity: 100%;
+    }
+  }
+
+  
+  

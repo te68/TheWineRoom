@@ -40,7 +40,7 @@
 <div class="review-separator"></div>
 
 <h1 class="review-heading">Reviews</h1>
-
+<%if @wine.reviews.length > 0%>
 <div class="ui card" id ="review-card">
 <%@wine.reviews.each do |review|%>
   <div class="content">
@@ -49,11 +49,12 @@
       <span class="date">Rating: <%= review.rating%></span>
     </div>
     <div class="description">
-      "<%= review.content%>"
+      <em>"<%= review.content%>"</em>
     </div>
   </div>
   <div class="extra content">
   </div>
+  <%end%>
   <%end%>
 </div>
 

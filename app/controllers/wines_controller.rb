@@ -1,11 +1,12 @@
 class WinesController < ApplicationController
   def index
-    @grapes = ["Cabernet Sauvginon", "Merlot", "Sauvginon Blanc", "Pinot Noir", "Reisling", "Malbec", "Pinot Grigio"]
-    @wines = Wine.all
-    if params[:country] == nil
+    @grapes = ["Cabernet Sauvignon", "Merlot", "Sauvignon Blanc", "Pinot Noir", "Riesling", "Malbec", "Pinot Grigio", "Rioja"]
+    if params[:wine] == nil
+      @wines = Wine.all
       @wines = Wine.all[0..100]
     else
-      @wines = Heroine.all.select { |heroine| heroine.power_id == params[:power_id].to_i }
+      @wines = Wine.all.select { |wine| wine.name.include?(params[:wine]) }
+      @wines = @wines.sort! { |a, b| a.rating <=> b.rating }.reverse
     end
   end
 

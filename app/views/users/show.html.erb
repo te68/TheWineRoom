@@ -1,27 +1,26 @@
 <%= link_to "Shopping Cart", "/carts/#{User.find(session[:user_id]).carts[0].id}", :class => "wines-link", :id=>'cart-link'%>
 <%= link_to "Logout", "/logout", :class => "wines-link" , :id => 'logout'%>
 <%= link_to "Wines",wines_path, :class => "wines-link", :id => "wines-page-link"%>
-
+<%= link_to "Edit Prefences", edit_user_path(@user), :class => "wines-link", :id => "edit-user-link" %>
 <%= @user.name%>
 <ul class="preferences-list">
 <%@user.preferences.each do |grape|%>
     <li class = "preferences-cards">
-    <%=grape.upcase%><%= link_to image_tag("baseline-close-24px.svg") %>
+    <%=link_to grape.upcase, "/wines"%>
     </li>
 <%end%>
 </ul>
-<%= link_to "Edit Prefences", edit_user_path(@user) %>
 
-<%@user.purchased.each do |w|%>
-<li><%=link_to w.name, wine_path(w)%></li>
-<%=button_to "Review Wine", "/reviews/#{w.id}/new"%>
-<%end%>
-<h1>My Reviews</h1>
-<%@user.reviews.each do |review|%>
-Wine: <%=link_to review.wine.name, wine_path(review.wine)%><br>
-Your Rating: <%=review.rating%><br>
-Your Review: <%=review.content%><br>
-<br>
-<%end%>
+    <%@user.purchased.each do |w|%>
+    <li><%=link_to w.name, wine_path(w)%></li>
+    <%=button_to "Review Wine", "/reviews/#{w.id}/new"%>
+    <%end%>
+    <h1>My Reviews</h1>
+    <%@user.reviews.each do |review|%>
+    Wine: <%=link_to review.wine.name, wine_path(review.wine)%><br>
+    Your Rating: <%=review.rating%><br>
+    Your Review: <%=review.content%><br>
+    <br>
+    <%end%>
 
 
